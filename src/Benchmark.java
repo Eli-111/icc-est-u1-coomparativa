@@ -1,15 +1,8 @@
 public class Benchmark {
-    public static Results medir(Runnable accion, String nombre, String sample) {
-        // System.out.println("Funcion:" + nombre);
-        // Tiempo actual
-        long startTime = System.nanoTime();
-        // Accion
-        accion.run();
-        // Tiempo Final
-        long endTime = System.nanoTime();
-
-        Results resultado = new Results(nombre, (endTime - startTime), sample);
-        // Return el tiempo de duracion
-        return resultado;
+    public static Results medir(Runnable operacion, String nombre, String sample) {
+        long inicio = System.nanoTime();
+        operacion.run();
+        long fin = System.nanoTime();
+        return new Results(nombre, fin - inicio, sample);
     }
 }
